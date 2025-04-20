@@ -1,0 +1,38 @@
+<div class="list-container">
+  <div *ngFor="let item of items" class="card-container">
+    <mat-card>
+      <p class="full-width paragraph-medium-bold">{{ item.date | date:'dd/MM/yyyy' }}</p>
+      <div class="flex space-btwn">
+        <div class="flex column">
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Open: </p>
+            <p class="default-bold">{{ item.open | currency: 'BRL' : 'R$ ' : '1.4-4' }}</p>
+          </div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Close: </p>
+            <p class="default-bold">{{ item.close | currency: 'BRL' : 'R$ ' : '1.4-4'  }}</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">High: </p>
+            <p class="default-bold">{{ item.high | currency: 'BRL' : 'R$ ' : '1.4-4' }}</p>
+          </div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Low: </p>
+            <p class="default-bold">{{ item.low | currency: 'BRL' : 'R$ ' : '1.4-4' }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex center-y-row">
+        <p class="table-header">Close diff (%): </p>
+        <p [ngClass]="{'alert-red': item.closeDiff < 0, 'alert-green': item.closeDiff > 0}"
+           class="default-bold flex">{{ item.closeDiff | percent: '1.2-2' }}
+          <mat-icon [style.color]="item.closeDiff < 0 ? 'red' : 'green'">
+            {{ item.closeDiff < 0 ? 'arrow_downward' : 'arrow_upward' }}
+          </mat-icon>
+        </p>
+      </div>
+    </mat-card>
+  </div>
+</div>

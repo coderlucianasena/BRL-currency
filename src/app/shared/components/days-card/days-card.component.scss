@@ -1,0 +1,31 @@
+.list-container {
+  padding: 10px 10px 0 10px;
+  background-color: var(--neutral-gray-03);
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--branded-01);
+}
+
+.card-container {
+  padding-bottom: 10px;
+
+  .paragraph-medium-bold {
+    color: var(--branded-01)
+  }
+}
+
+.table-header {
+  margin-right: 14px;
+}
+
+.default-bold {
+  color: var(--neutral-dark-02);
+}
+
+
+.alert-green {
+  color: var(--alert-green)
+}
+
+.alert-red {
+  color: var(--alert-red);
+}

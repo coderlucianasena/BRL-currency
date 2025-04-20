@@ -1,0 +1,11 @@
+@use 'src/styles' as mixins;
+
+.main-footer {
+  background: var(--branded-01);
+  p {
+    @include mixins.table-pagination;
+    color: var(--white);
+    padding: 7px;
+    margin: 0;
+  }
+}

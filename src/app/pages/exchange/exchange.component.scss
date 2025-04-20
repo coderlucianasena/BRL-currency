@@ -1,0 +1,63 @@
+@use 'src/styles' as mixins;
+
+.spacement {
+  margin: 0 15px;
+}
+
+.main-title {
+  text-transform: uppercase;
+  margin: 32px 0;
+  color: var(--branded-01);
+}
+
+button {
+  padding: 12px 16px;
+  text-transform: uppercase;
+  border-radius: 100px;
+  margin: 32px 0;
+}
+
+.currency-form {
+  mat-form-field {
+    color: var(--neutral-dark-02);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.results {
+  border-top: 1px solid #E5E5E5;
+  padding-top: 30px;
+
+  .currency-to-currency {
+    color: var(--branded-01);
+  }
+
+  .current-currency {
+    padding: 16px;
+    background-color: rgba(7, 176, 251, 0.1);
+    margin: 15px 0 32px;
+
+    .big-number {
+      color: var(--branded-01);
+    }
+  }
+
+  .large-bold, .last-30 {
+    color: var(--neutral-dark-01);
+  }
+
+  .paragraph-medium {
+    color: #333;
+  }
+
+  .last-days-title-group {
+    padding-bottom: 16px;
+  }
+}
+
+.blue-separator {
+  border-bottom: 1px solid var(--branded-01);
+}

@@ -1,0 +1,47 @@
+<div class="spacement">
+  <section class="main-content txt-center">
+    <h1 class="main-title title-admin-h1">BRL Exchange Rate</h1>
+    <form [formGroup]="form" class="currency-form full-width">
+      <mat-form-field appearance="fill" class="full-width input-content">
+        <mat-label>Enter the currency code</mat-label>
+        <input [matAutocomplete]="auto"
+               aria-label="Enter the currency code"
+               formControlName="currency"
+               matInput
+               type="text">
+        <mat-autocomplete #auto=matAutocomplete>
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button (click)="onChangeClick()" class="full-width button-large" color="primary" mat-flat-button>Exchange
+        Result
+      </button>
+    </form>
+  </section>
+  <section *ngIf="currentData" [@slideIn]="" class="results">
+    <div class="flex center-y-row space-btwn">
+      <div class="flex column">
+        <p class="large-bold">Exchange rate now</p>
+        <p class="paragraph-medium">{{ currentData?.lastUpdatedAt | date:'dd/MM/yyyy - HH\'h\'mm'}}</p>
+      </div>
+      <div class="currency-to-currency title-admin-h1">
+        {{currentData?.toSymbol}}/{{currentData?.fromSymbol}}
+      </div>
+    </div>
+    <div class="current-currency txt-center">
+      <p class="big-number">{{ currentData?.exchangeRate | currency}}</p>
+    </div>
+    <div>
+      <div [ngClass]="{'blue-separator': !openList}" class="last-days-title-group flex space-btwn">
+        <p class="paragraph-default txt-uppercase last-30">last 30 days</p>
+        <mat-icon (click)="openList = !openList" *ngIf="!openList" class="cursor-pointer" color="primary">add</mat-icon>
+        <mat-icon (click)="openList = !openList" *ngIf="openList" class="cursor-pointer" color="primary">remove
+        </mat-icon>
+      </div>
+      <app-days-card *ngIf="openList && dailyItems" [items]="dailyItems"></app-days-card>
+    </div>
+  </section>
+</div>
+
