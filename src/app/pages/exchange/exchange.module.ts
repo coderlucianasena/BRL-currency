@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExchangeComponent } from './exchange.component';
 import { ExchangeRoutingModule } from '@app/pages/exchange/exchange-routing.module';
@@ -32,6 +32,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatCardModule,
     MatSnackBarModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ExchangeModule {
 }

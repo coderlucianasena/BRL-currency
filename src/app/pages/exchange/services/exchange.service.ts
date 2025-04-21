@@ -29,6 +29,7 @@ export class ExchangeService {
         return currentExchange;
       })
       .catch((error) => {
+        console.error('API Error Details:', error);
         throw new HttpErrorResponse(error);
       })
   }

@@ -26,7 +26,7 @@ export class ExchangeComponent {
   public openList: boolean = false;
   public currentData: ICurrentExchange | undefined;
   public dailyItems: IDailyExchange[] = [];
-  private toCurrency = 'BRL';
+  private fromCurrency = 'BRL';
 
   constructor(
     private exchangeService: ExchangeService,
@@ -42,13 +42,18 @@ export class ExchangeComponent {
     );
   }
 
-  public async onChangeClick(): Promise<void> {
+  public async onChangeClick(event?: Event): Promise<void> {
+    // Implementando a sugestão do Blackbox AI para prevenir o comportamento padrão de submissão do formulário
+    if (event) {
+      event.preventDefault();
+    }
+    
     if (!this.form.get('currency')?.value) return;
 
-    await this.exchangeService.getCurrentExchange(this.form.get('currency')?.value, this.toCurrency,)
+    await this.exchangeService.getCurrentExchange(this.fromCurrency, this.form.get('currency')?.value)
       .then(async (data) => {
         this.currentData = data;
-        await this.exchangeService.getDailyExchange(this.form.get('currency')?.value, this.toCurrency)
+        await this.exchangeService.getDailyExchange(this.fromCurrency, this.form.get('currency')?.value)
           .then((data) => {
             this.dailyItems = data.filter((result) => {
               const dayOfWeek = result.date.getDay();
@@ -56,7 +61,8 @@ export class ExchangeComponent {
             }).sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 30)
           })
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error('API Error Details:', error);
         this.snackBarService.open('An error has occurred', 'Close', {
           duration: 2000,
           verticalPosition: 'top',
@@ -66,7 +72,6 @@ export class ExchangeComponent {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.currencyOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

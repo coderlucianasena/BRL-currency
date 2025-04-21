@@ -15,7 +15,11 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button (click)="onChangeClick()" class="full-width button-large" color="primary" mat-flat-button>Exchange
+      <button (click)="onChangeClick($event)" 
+              class="full-width button-large" 
+              color="primary" 
+              mat-flat-button
+              type="button">Exchange
         Result
       </button>
     </form>
@@ -24,14 +28,14 @@
     <div class="flex center-y-row space-btwn">
       <div class="flex column">
         <p class="large-bold">Exchange rate now</p>
-        <p class="paragraph-medium">{{ currentData?.lastUpdatedAt | date:'dd/MM/yyyy - HH\'h\'mm'}}</p>
+        <p class="paragraph-medium">{{ currentData.lastUpdatedAt | date:'dd/MM/yyyy - HH\'h\'mm'}}</p>
       </div>
       <div class="currency-to-currency title-admin-h1">
-        {{currentData?.toSymbol}}/{{currentData?.fromSymbol}}
+        {{currentData.fromSymbol}}/{{currentData.toSymbol}}
       </div>
     </div>
     <div class="current-currency txt-center">
-      <p class="big-number">{{ currentData?.exchangeRate | currency}}</p>
+      <p class="big-number">{{ currentData.exchangeRate | currency}}</p>
     </div>
     <div>
       <div [ngClass]="{'blue-separator': !openList}" class="last-days-title-group flex space-btwn">
@@ -44,4 +48,3 @@
     </div>
   </section>
 </div>
-
