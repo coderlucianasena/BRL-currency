@@ -110,7 +110,7 @@ src/
 
 ## Observações
 
-Este projeto foi desenvolvido como um teste técnico. A abordagem de simulação da API foi adotada após múltiplas tentativas de utilizar a API real, que consistentemente retornava mensagens de erro mesmo com os parâmetros corretos e seguindo a documentação fornecida.
+Este projeto foi desenvolvido como um teste técnico para vaga de desenvolvedora frontend. A abordagem de simulação da API foi adotada após múltiplas tentativas de utilizar a API real, que consistentemente retornava mensagens de erro mesmo com os parâmetros corretos e seguindo a documentação fornecida.
 
 Em um ambiente de produção, seria recomendado:
 1. Resolver as questões de comunicação com a API
