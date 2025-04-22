@@ -6,7 +6,7 @@ Um aplicativo web Angular para verificar taxas de câmbio do Real Brasileiro (BR
 
 Este projeto é uma aplicação de página única que permite aos usuários consultar a taxa de câmbio atual do Real Brasileiro em relação a outras moedas. Os usuários também podem verificar o histórico das taxas de câmbio dos últimos 30 dias.
 
-![Mockup](assets/BRL-exchange-rate.png) 
+![Mockup](./assets/BRL-exchange-rate.png) 
 
 ## Requisitos do Projeto
 
