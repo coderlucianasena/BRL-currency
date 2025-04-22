@@ -7,8 +7,9 @@ import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '@app/app-routing.module';
-import { HttpClientModule } from "@angular/common/http";
-import {HashLocationStrategy, LocationStrategy, registerLocaleData} from "@angular/common";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from "@angular/common";
+import { MockApiInterceptor } from './shared/interceptors/mock-api.interceptor';
 import ptBr from '@angular/common/locales/pt'
 
 registerLocaleData(ptBr)
@@ -29,7 +30,8 @@ registerLocaleData(ptBr)
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: MockApiInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent,
